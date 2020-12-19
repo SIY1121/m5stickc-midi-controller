@@ -1,14 +1,14 @@
+#pragma once
+
 #include "status.h"
 #include "M5StickC.h"
 #include "status/Calibration.h"
-class CalibrationReady: public Status {
+class CalibrationReadyStatus: public Status {
 public:
-  Status* exec(Sensor& acc, Sensor& gyro, Sensor& mag, BLE_MIDI& midi, bool isFirstPaint);
+  StatusNo exec(bool isFirstPaint);
 };
 
-Status *calibrationReadyStatus = new CalibrationReady();
-
-Status* CalibrationReady::exec(Sensor& acc, Sensor& gyro, Sensor& mag, BLE_MIDI& midi, bool isFirstPaint) {
+StatusNo CalibrationReadyStatus::exec(bool isFirstPaint) {
   if(isFirstPaint){
     M5.Lcd.setCursor(0,90);
     M5.Lcd.setTextDatum(4);
@@ -17,7 +17,7 @@ Status* CalibrationReady::exec(Sensor& acc, Sensor& gyro, Sensor& mag, BLE_MIDI&
     M5.Lcd.fillTriangle(30,130,50,130,40,150, TFT_WHITE);
   }
   if(M5.BtnA.wasPressed())
-    return calibrationStatus;
+    return StatusNo::Calibration;
   else
-    return calibrationReadyStatus;
+    return StatusNo::CalibrationReady;
 }
