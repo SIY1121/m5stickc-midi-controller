@@ -1,12 +1,17 @@
 #include "sensor.h"
 #include <bmm150.h>
-
+struct MagData
+{
+    int16_t x = 0;
+    int16_t y = 0;
+    int16_t z = 0;
+};
 class MagSensor: public Sensor {
 private:
   BMM150 bmm;
-  bmm150_mag_data value_offset;
-  bmm150_mag_data value_max;
-  bmm150_mag_data value_min;
+  MagData value_offset;
+  MagData value_max;
+  MagData value_min;
   unsigned long time = 0;
 public:
   bool init();
