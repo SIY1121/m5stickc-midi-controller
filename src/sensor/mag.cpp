@@ -13,8 +13,8 @@ void MagSensor::read(float *x, float *y, float *z) {
   *z = bmm.mag_data.z - value_offset.z;
 }
 
-bool MagSensor::calibrate() {
-  delay(2);
+bool MagSensor::calibrate(float &progress) {
+  progress = (millis() - time) / 20000.0f;
   bmm.read_mag_data();
 
   // 初回呼び出し

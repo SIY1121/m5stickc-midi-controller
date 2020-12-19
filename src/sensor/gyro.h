@@ -15,5 +15,5 @@ class GyroSensor: public Sensor {
 public:
   bool init();
   void read(float *x, float *y, float *z);
-  bool calibrate();
+  bool calibrate(float &progress);
 };

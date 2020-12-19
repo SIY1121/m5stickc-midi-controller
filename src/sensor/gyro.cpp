@@ -12,8 +12,8 @@ void GyroSensor::read(float *x, float *y, float *z) {
   *z-=offset.z;
 }
 
-bool GyroSensor::calibrate() {
-  delay(2);
+bool GyroSensor::calibrate(float &progress) {
+  progress = (millis() - time) / 1000.0f;
   if(time == 0) time = millis();
   float x,y,z;
   M5.Imu.getGyroData(&x, &y, &z);

@@ -12,8 +12,8 @@ void AccelSensor::read(float *x, float *y, float *z) {
   *z-=offset.z;
 }
 
-bool AccelSensor::calibrate() {
-  delay(2);
+bool AccelSensor::calibrate(float &progress) {
+  progress = (millis() - time) / 1000.0f;
   if(time == 0) time = millis();
   float x,y,z;
   M5.Imu.getAccelData(&x, &y, &z);
