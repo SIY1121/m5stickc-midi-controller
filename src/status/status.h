@@ -3,7 +3,14 @@
 #include "sensor/sensor.h"
 #include "ble.h"
 
+enum StatusNo {
+  CalibrationReady,
+  Calibration,
+  Running,
+  Setting,
+  StatusCount
+};
 class Status {
 public:
-    virtual Status* exec(Sensor& acc, Sensor& gyro, Sensor& mag, BLE_MIDI& midi, bool isFirstPaint) = 0;
+    virtual StatusNo exec(bool isFirstPaint) = 0;
 };
