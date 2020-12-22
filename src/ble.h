@@ -15,6 +15,7 @@ class BLE_MIDI: BLEServerCallbacks {
 
   void onConnect(BLEServer* pServer);
   void onDisconnect(BLEServer* pServer);
+  void generateHeader(uint8_t *header);
   void send(uint8_t *data);
 
 public:
