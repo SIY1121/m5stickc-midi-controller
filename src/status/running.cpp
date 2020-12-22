@@ -11,7 +11,7 @@ uint8_t degToValue(const float &deg) {
 StatusNo RunningStatus::exec(bool isFirstPaint) {
 
   if(isFirstPaint) {
-    M5.Lcd.setTextColor(TFT_WHITE, TFT_DARKGREY);
+    M5.Lcd.setTextColor(TFT_WHITE, TFT_DARKCYAN);
     M5.Lcd.setTextDatum(0);
     M5.Lcd.setTextSize(1);
     M5.Lcd.setTextFont(1);
@@ -35,7 +35,7 @@ StatusNo RunningStatus::exec(bool isFirstPaint) {
     M5.Lcd.setTextColor(TFT_WHITE, TFT_RED);
     M5.Lcd.drawString("BLE adv...   ", 2,2,1);
   }
-  M5.Lcd.setTextColor(TFT_WHITE, TFT_DARKGREY);
+  M5.Lcd.setTextColor(TFT_WHITE, TFT_DARKCYAN);
 
   acc.read(&ax, &ay, &az);
   gyro.read(&gx, &gy, &gz);

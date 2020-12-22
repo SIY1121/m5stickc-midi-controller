@@ -43,8 +43,8 @@ void setup()
 
   midi.init();
   midi.connect();
-  M5.Lcd.fillScreen(TFT_DARKGREY);
-  M5.Lcd.setTextColor(TFT_WHITE,TFT_DARKGREY);
+  M5.Lcd.fillScreen(TFT_DARKCYAN);
+  M5.Lcd.setTextColor(TFT_WHITE,TFT_DARKCYAN);
 
   filter.begin(100);
 }
@@ -57,7 +57,7 @@ void loop()
   StatusNo next = statusMap[currentStatus]->exec(isFirstPaint);
   if(next != currentStatus) {
     currentStatus = next;
-    M5.Lcd.fillScreen(TFT_DARKGREY);
+    M5.Lcd.fillScreen(TFT_DARKCYAN);
     isFirstPaint = true;
   } else {
     isFirstPaint = false;
